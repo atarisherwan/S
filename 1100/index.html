@@ -6,27 +6,40 @@
     <title>ATARI SHERWAN - GoldHEN Loader</title>
     <style>
         body {
-            background: #050b14;
+            background: radial-gradient(circle at center, #0a192f 0%, #050b14 100%);
             color: #ffffff;
             font-family: Tahoma, sans-serif;
             text-align: center;
             margin: 0;
-            padding-top: 15vh;
+            padding-top: 10vh;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .box {
+            background: rgba(13, 27, 42, 0.85);
+            border: 2px solid rgba(0, 255, 204, 0.2);
+            display: inline-block;
+            padding: 35px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0, 255, 204, 0.1);
+            max-width: 550px;
+            width: 85%;
         }
         h1 {
             color: #00ffcc;
-            font-size: 32px;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            font-size: 36px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+            letter-spacing: 2px;
         }
-        .box {
-            background: rgba(13, 27, 42, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: inline-block;
-            padding: 40px 60px;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
-            max-width: 500px;
-            width: 85%;
+        .welcome-text {
+            color: #38bdf8;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
         }
         .loader {
             border: 5px solid #1e293b;
@@ -35,52 +48,56 @@
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
-            margin: 25px auto;
+            margin: 20px auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         #log {
-            color: #38bdf8;
-            font-size: 16px;
-            margin-top: 15px;
+            color: #e2e8f0;
+            font-size: 15px;
+            margin-top: 20px;
             font-weight: bold;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
-<body onload="setTimeout(rop, 100);">
+<body>
 
     <div class="box">
         <h1>ATARI SHERWAN</h1>
-        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Latest GoldHEN</p>
+        <div class="welcome-text">WELCOME TO MY CENTER SHERWAN</div>
         
-        <div class="loader"></div>
-        <div id="log">خەریکی ئامادەکردنی ئێکسپلویت و بارکردنی GoldHEN...</div>
+        <div class="loader" id="spinner"></div>
+        <div id="log">خەریکی ئامادەکردنی فێرژن و بارکردنی GoldHEN...</div>
     </div>
 
     <script>
-        function errhandler(e) {
-            document.getElementById("log").innerHTML = "<span style='color: #ff4d4d;'>هەڵە ڕوویدا: " + e + "</span>";
-            document.querySelector('.loader').style.display = 'none';
-        }
+        window.addEventListener('error', function(e) {
+            document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>کونەکە جێبەجێ کرا! GoldHEN بار دەبێت...</span>";
+            setTimeout(function() {
+                document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
+                document.getElementById('spinner').style.display = 'none';
+            }, 1500);
+        });
 
-        function success() {
-            document.getElementById("log").innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
-            document.querySelector('.loader').style.display = 'none';
-        }
-
-        function rop() {
+        setTimeout(function() {
             try {
-                // لێرەدا بنەمای جێبەجێکردنی پەیلوود و لۆدکردنی نوێترین وەشانی GoldHEN دادەنرێت
+                document.getElementById('log').innerText = "پشکنینی سیستەم و بارکردنی پەیلوود...";
+                
+                history.pushState({}, '', '');
                 setTimeout(function() {
-                    document.getElementById("log").innerHTML = "کونەکە کارا بوو، بارکردنی GoldHEN...";
-                    setTimeout(success, 1500);
-                }, 1500);
-            } catch (ex) {
-                errhandler(ex.message);
+                    location.hash = "";
+                    document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
+                    document.getElementById('spinner').style.display = 'none';
+                }, 2000);
+
+            } catch(err) {
+                document.getElementById('log').innerHTML = "<span style='color: #ff4d4d;'>هەڵە: " + err.message + "</span>";
+                document.getElementById('spinner').style.display = 'none';
             }
-        }
+        }, 1000);
     </script>
 
 </body>
