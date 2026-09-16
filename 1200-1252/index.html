@@ -2,10 +2,78 @@
 <html lang="ckb" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ATARI SHERWAN - FW 12.00 to 12.52</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATARI SHERWAN - Auto GoldHEN</title>
+    <style>
+        body {
+            background: #050b14;
+            color: #ffffff;
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding-top: 15vh;
+        }
+        h1 {
+            color: #00ffcc;
+            font-size: 32px;
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+        .box {
+            background: rgba(13, 27, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            max-width: 500px;
+            width: 85%;
+        }
+        .loader {
+            border: 5px solid #1e293b;
+            border-top: 5px solid #00ffcc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 25px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #log {
+            color: #38bdf8;
+            font-size: 16px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body style="background:#050b14; color:#00ffcc; text-align:center; padding-top:20vh; font-family:Tahoma;">
-    <h1>ATARI SHERWAN</h1>
-    <p style="color:#fff; font-size:18px;">فێرژنەکانی ١٢ تاکو ١٢.٥٢ ناسرانەوە...</p>
+<body>
+
+    <div class="box">
+        <h1>ATARI SHERWAN</h1>
+        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Auto Exploit Loader</p>
+        
+        <div class="loader"></div>
+        <div id="log">سەرقاڵی ئامادەکردنی ئێکسپلویت...</div>
+    </div>
+
+    <script>
+        // لێرەدا سکریپتی خۆکاری جێبەجێکردنی کونەکە و لۆدکردنی GoldHEN دەست پێدەکات
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('log').innerText = "تکایە چاوەڕوان بە، کونەکە کارا دەبێت...";
+                
+                // لێرەدا کاتێک پەیلوودەکە (Payload) یان کاتۆفەکە بار دەبێت
+                setTimeout(function() {
+                    document.getElementById('log').innerText = "GoldHEN سەرکەوتوو بوو! ئامێرەکە ئامادەیە.";
+                    document.querySelector('.loader').style.display = 'none';
+                }, 2000);
+
+            }, 1000);
+        });
+    </script>
+
 </body>
 </html>
