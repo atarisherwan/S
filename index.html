@@ -1,58 +1,60 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - Soran Center</title>
-    <style>
-        body {
-            background: #050b14;
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding-top: 20vh;
-        }
-        h1 {
-            color: #00ffcc;
-            font-size: 36px;
-            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-        }
-        p {
-            color: #a0aec0;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        .loader {
-            border: 5px solid #1e293b;
-            border-top: 5px solid #00ffcc;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 30px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+<meta charset="utf-8">
+<title>ATARI SHERWAN - PS4 GoldHEN Host</title>
+<link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body style="background-color: #0b0b0b; color: white; text-align: center; font-family: sans-serif;">
 
-    <h1>ATARI SHERWAN</h1>
-    <p>Soran Center - Firmware Detector...</p>
-    <div class="loader"></div>
+    <!-- بەشی ڕوکار و ناوی دووکانەکەت -->
+    <div style="margin-top: 20px;">
+        <h1 style="font-size: 40px; color: #00ffcc; font-weight: bold; margin-bottom: 5px;">ATARI SHERWAN</h1>
+        <h2 style="font-size: 22px; color: #ff9900; margin-top: 0;">WELCOME TO MY CENTER SHERWAN</h2>
+        <hr style="border: 1px solid #444; width: 60%; margin: 15px auto;">
+    </div>
 
-    <script>
-        // لێرەدا سیستەمی ناسینەوەی فێرژن و گواستنەوە بۆ فۆڵدەری گونجاو کار دەکات
-        setTimeout(function() {
-            var ua = navigator.userAgent;
-            // نموونەی پشکنینی فێرژن و ڕێڕەوکردن بۆ فۆڵدەرەکان
-            // بۆ نموونە ئەگەر فێرژنەکە دیاری کرابێت دەگوازرێتەوە ناو فۆڵدەرەکەی خۆی
-            window.location.href = "1100/"; // نموونە یان فێرژنی گونجاو
-        }, 1500);
-    </script>
+    <h1 style="margin-top: 17px; font-size: 28px;">Loading Payload... Please Wait !!!</h1>
+    <br><br><br>
+    <h1 style="font-size:24px; color: #aaa;">This will take a time between 20 and 40 seconds ...</h1>
+
+    <div style="opacity: 0">
+    <p><i>Italic text</i></p>
+    <table>
+    <tr>
+    <th>H1</th>
+    <th>H2</th>
+    <th>H3</th>
+    </tr>
+    <tr>
+    <td>text</td>
+    <td><input value="text"/></td>
+    <td><button>text</button></td>
+    </tr>
+    </table>
+    </div>
+
+<script>
+function loadScript(path)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", path, false);
+    xhr.send('');
+    return xhr.responseText;
+}
+
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('exploit.js')
++loadScript('malloc.js')
++loadScript('rop2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('payload.js')
++loadScript('relocator.js')
++loadScript('frontend.js'));
+}, 50);
+</script>
 
 </body>
 </html>
