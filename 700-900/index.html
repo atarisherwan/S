@@ -1,104 +1,95 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - GoldHEN Loader</title>
-    <style>
-        body {
-            background: radial-gradient(circle at center, #0a192f 0%, #050b14 100%);
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding-top: 10vh;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .box {
-            background: rgba(13, 27, 42, 0.85);
-            border: 2px solid rgba(0, 255, 204, 0.2);
-            display: inline-block;
-            padding: 35px 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0, 255, 204, 0.1);
-            max-width: 550px;
-            width: 85%;
-        }
-        h1 {
-            color: #00ffcc;
-            font-size: 36px;
-            margin-bottom: 5px;
-            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-            letter-spacing: 2px;
-        }
-        .welcome-text {
-            color: #38bdf8;
-            font-size: 17px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-        }
-        .loader {
-            border: 5px solid #1e293b;
-            border-top: 5px solid #00ffcc;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        #log {
-            color: #e2e8f0;
-            font-size: 15px;
-            margin-top: 20px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-    </style>
+<title>PS4 [5.05] 7.00 - 13.00 FW GoldHEN Host by GamerHack</title>
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
+<script>
+var uaFull = navigator.userAgent;
+var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+var isPS4 = match !== null;
+var fwVersion = isPS4 ? match[1] : "Unknown";
+var fwNum = parseFloat(fwVersion);
 
-    <div class="box">
-        <h1>ATARI SHERWAN</h1>
-        <div class="welcome-text">WELCOME TO MY CENTER SHERWAN</div>
-        
-        <div class="loader" id="spinner"></div>
-        <div id="log">خەریکی ئامادەکردنی فێرژن و بارکردنی GoldHEN...</div>
-    </div>
+function onScriptError() {
+    msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+}
 
-    <script>
-        window.addEventListener('error', function(e) {
-            document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>کونەکە جێبەجێ کرا! GoldHEN بار دەبێت...</span>";
-            setTimeout(function() {
-                document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
-                document.getElementById('spinner').style.display = 'none';
-            }, 1500);
-        });
-
-        setTimeout(function() {
-            try {
-                document.getElementById('log').innerText = "پشکنینی سیستەم و بارکردنی پەیلوود...";
-                
-                history.pushState({}, '', '');
-                setTimeout(function() {
-                    location.hash = "";
-                    document.getElementById('log').innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
-                    document.getElementById('spinner').style.display = 'none';
-                }, 2000);
-
-            } catch(err) {
-                document.getElementById('log').innerHTML = "<span style='color: #ff4d4d;'>هەڵە: " + err.message + "</span>";
-                document.getElementById('spinner').style.display = 'none';
-            }
-        }, 1000);
-    </script>
-
+if (!isPS4) {
+    document.addEventListener("DOMContentLoaded", () => {
+        msgs.innerHTML = "Only for PS4 with Firmware 5.05 and 7.00 to 13.00";
+    });
+} else {
+    if (window.applicationCache.status == '0') {
+        if (fwNum == 5.05 || fwNum == 5.07) {
+            window.location.replace("cache505.html");
+        } else if (fwNum >= 7.00 && fwNum <= 8.52) {
+            window.location.replace("cache700.html");
+        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+            window.location.replace("cache900.html");
+        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            window.location.replace("cachecss.html");
+        } else if (fwNum >= 11.50 && fwNum <= 13.00) {
+            window.location.replace("cacheslopkit.html");
+        } else {
+            document.addEventListener("DOMContentLoaded", () => {
+                msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
+            });
+        }
+    } else {
+        if (fwNum == 5.05 || fwNum == 5.07) {
+            var script = document.createElement('script');
+            script.src = "505/exploit.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 7.00 && fwNum <= 8.52) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "700/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 9.00 && fwNum <= 9.60) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "900/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            var script = document.createElement('script');
+            script.src = "css/main.js";
+            script.onerror = onScriptError;
+            script.onload = function () {
+                setTimeout(function () {
+                    doJb();
+                }, 500);
+            };
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 11.50 && fwNum <= 12.02) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_lapse.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 12.50 && fwNum <= 13.00) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_poops.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+    }
+}
+</script>
+<h1>PS4 [5.05] 7.00 - 13.00 FW GoldHEN Host by GamerHack</h1>
+<hr>
+<br>
+<h1 id=msgs style="font-size: 30px;margin-top: 77px;margin-bottom: 455px;">Loading GoldHEN v2.4b18.10... Please Wait</h1>
+<h1 style="margin-top: 43px;">Special Thanks to:<a href="https://twitter.com/_AlAzif" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@_AlAzif</a>ChendoChap<a href="https://x.com/Kameleonre_" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@Kameleonre_</a>SiSTR0 Abc</h1>
 </body>
 </html>
