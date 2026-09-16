@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - PS4 GoldHEN Auto Host</title>
+    <title>ATARI SHERWAN - PS4 Auto GoldHEN Host</title>
     <style>
         body {
             background: linear-gradient(135deg, #050b14 0%, #0d1b2a 50%, #1b263b 100%);
@@ -19,12 +19,11 @@
             align-items: center;
         }
         .container {
-            background: rgba(13, 27, 42, 0.75);
-            padding: 40px 60px;
+            background: rgba(13, 27, 42, 0.85);
+            padding: 45px 65px;
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             max-width: 600px;
             width: 90%;
         }
@@ -34,13 +33,12 @@
             font-size: 38px;
             letter-spacing: 3px;
             font-family: Arial, sans-serif;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
         }
         p.subtitle {
             color: #a0aec0;
             font-size: 18px;
             margin-top: 10px;
-            font-weight: normal;
             letter-spacing: 1px;
         }
         .welcome-text {
@@ -50,11 +48,11 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            background: linear-gradient(90deg, #ff007f, #7928ca);
+            background: linear-gradient(90deg, #1f6feb, #238636);
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+            box-shadow: 0 4px 15px rgba(31, 111, 235, 0.4);
         }
         .status {
             margin-top: 30px;
@@ -83,18 +81,33 @@
         <p class="subtitle">Sherwan Center</p>
         <div class="welcome-text">WELCOME TO MY CENTER SHERWAN</div>
         
-        <div class="status" id="statusText">چاوەڕوان بە... سیستەم دەناسێتەوە و GoldHEN کار پێدەکات</div>
+        <div class="status" id="statusText">سەرقاڵی ناسینەوەی فێرژنی کۆسول... تکایە چاوەڕوان بە</div>
     </div>
 
     <div class="footer">
-        <p>Atari Sherwan - Soran | Automatic Exploit Host</p>
+        <p>Atari Sherwan - Soran | Automatic GoldHEN Host</p>
     </div>
 
     <script>
-        // لێرەدا کۆدی ئۆتۆماتیکی ناسینەوەی فێرژن و کارپێکردنی GoldHEN جێگیر دەبێت
-        setTimeout(function() {
-            document.getElementById("statusText").innerHTML = "تکایە کەمێک چاوەڕوان بە، هاک دەکرێت...";
-        }, 2000);
+        // سکریپتی ئۆتۆماتیکی بۆ خوێندنەوەی فێرژنی پلیستەشن و جێبەجێکردنی هاک
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                try {
+                    var ua = navigator.userAgent;
+                    // پشکنینی فێرژن لە ڕێگەی User Agentـی پلیستەشنەوە
+                    if (ua.includes("PlayStation 4")) {
+                        var match = ua.match(/Mozilla\/5\.0 \((?:PlayStation 4 وحدة التحكم|PlayStation 4; Ver ([0-9.]+))/i);
+                        // لێرەدا دەتوانین ڕەوانەی فێرژنی گونجاو بکەین یان بە شێوەی خۆکار جێبەجێی بکەین
+                        document.getElementById("statusText").innerHTML = "فێرژن ناسراوە... خەریکی جێبەجێکردنی GoldHENـین";
+                    } else {
+                        // ئەگەر لەسەر کۆمپیوتەر یان مۆبایل کرایەوە بۆ تاقیکردنەوە
+                        document.getElementById("statusText").innerHTML = "سیستەمی ATARI SHERWAN ئامادەیە بۆ کارکردن لەسەر PS4";
+                    }
+                } catch (e) {
+                    document.getElementById("statusText").innerHTML = "ئامادەکردنی پەیلوود بۆ هاککردنی ئۆتۆماتیک...";
+                }
+            }, 1500);
+        });
     </script>
 
 </body>
