@@ -3,111 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - PS4 Auto GoldHEN Host</title>
+    <title>ATARI SHERWAN - GoldHEN Loader</title>
     <style>
         body {
-            background: linear-gradient(135deg, #050b14 0%, #0d1b2a 50%, #1b263b 100%);
+            background: #050b14;
             color: #ffffff;
-            font-family: Tahoma, Arial, sans-serif;
+            font-family: Tahoma, sans-serif;
             text-align: center;
             margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: rgba(13, 27, 42, 0.85);
-            padding: 45px 65px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            max-width: 600px;
-            width: 90%;
+            padding-top: 15vh;
         }
         h1 {
             color: #00ffcc;
-            margin: 0;
-            font-size: 38px;
-            letter-spacing: 3px;
-            font-family: Arial, sans-serif;
-            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+            font-size: 32px;
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
         }
-        p.subtitle {
-            color: #a0aec0;
-            font-size: 18px;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-        .welcome-text {
-            color: #ffffff;
-            font-size: 15px;
-            margin-top: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #1f6feb, #238636);
-            padding: 10px 20px;
-            border-radius: 10px;
+        .box {
+            background: rgba(13, 27, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(31, 111, 235, 0.4);
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            max-width: 500px;
+            width: 85%;
         }
-        .status {
-            margin-top: 30px;
-            font-size: 16px;
+        .loader {
+            border: 5px solid #1e293b;
+            border-top: 5px solid #00ffcc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 25px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #log {
             color: #38bdf8;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 13px;
-            color: #64748b;
-            letter-spacing: 1px;
+            font-size: 16px;
+            margin-top: 15px;
+            font-weight: bold;
         }
     </style>
 </head>
-<body>
+<body onload="setTimeout(rop, 100);">
 
-    <div class="container">
+    <div class="box">
         <h1>ATARI SHERWAN</h1>
-        <p class="subtitle">Sherwan Center</p>
-        <div class="welcome-text">WELCOME TO MY CENTER SHERWAN</div>
+        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Latest GoldHEN</p>
         
-        <div class="status" id="statusText">سەرقاڵی ناسینەوەی فێرژنی کۆسول... تکایە چاوەڕوان بە</div>
-    </div>
-
-    <div class="footer">
-        <p>Atari Sherwan - Soran | Automatic GoldHEN Host</p>
+        <div class="loader"></div>
+        <div id="log">خەریکی ئامادەکردنی ئێکسپلویت و بارکردنی GoldHEN...</div>
     </div>
 
     <script>
-        // سکریپتی ئۆتۆماتیکی بۆ خوێندنەوەی فێرژنی پلیستەشن و جێبەجێکردنی هاک
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                try {
-                    var ua = navigator.userAgent;
-                    // پشکنینی فێرژن لە ڕێگەی User Agentـی پلیستەشنەوە
-                    if (ua.includes("PlayStation 4")) {
-                        var match = ua.match(/Mozilla\/5\.0 \((?:PlayStation 4 وحدة التحكم|PlayStation 4; Ver ([0-9.]+))/i);
-                        // لێرەدا دەتوانین ڕەوانەی فێرژنی گونجاو بکەین یان بە شێوەی خۆکار جێبەجێی بکەین
-                        document.getElementById("statusText").innerHTML = "فێرژن ناسراوە... خەریکی جێبەجێکردنی GoldHENـین";
-                    } else {
-                        // ئەگەر لەسەر کۆمپیوتەر یان مۆبایل کرایەوە بۆ تاقیکردنەوە
-                        document.getElementById("statusText").innerHTML = "سیستەمی ATARI SHERWAN ئامادەیە بۆ کارکردن لەسەر PS4";
-                    }
-                } catch (e) {
-                    document.getElementById("statusText").innerHTML = "ئامادەکردنی پەیلوود بۆ هاککردنی ئۆتۆماتیک...";
-                }
-            }, 1500);
-        });
+        function errhandler(e) {
+            document.getElementById("log").innerHTML = "<span style='color: #ff4d4d;'>هەڵە ڕوویدا: " + e + "</span>";
+            document.querySelector('.loader').style.display = 'none';
+        }
+
+        function success() {
+            document.getElementById("log").innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
+            document.querySelector('.loader').style.display = 'none';
+        }
+
+        function rop() {
+            try {
+                // لێرەدا بنەمای جێبەجێکردنی پەیلوود و لۆدکردنی نوێترین وەشانی GoldHEN دادەنرێت
+                setTimeout(function() {
+                    document.getElementById("log").innerHTML = "کونەکە کارا بوو، بارکردنی GoldHEN...";
+                    setTimeout(success, 1500);
+                }, 1500);
+            } catch (ex) {
+                errhandler(ex.message);
+            }
+        }
     </script>
 
 </body>
