@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATARI SHERWAN - PS4 GoldHEN Host (7.00 - 13.00)</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Tahoma, Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #1f6feb, #238636);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        /* دیزاینی لۆگۆکە */
+        .logo {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
+        }
+        p.subtitle {
+            color: #e6edf3;
+            font-size: 16px;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+        .welcome-text {
+            color: #58a6ff;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .fw-btn {
+            background-color: #21262d;
+            color: #58a6ff;
+            border: 2px solid #30363d;
+            padding: 15px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+        .fw-btn:hover {
+            background-color: #1f6feb;
+            color: #ffffff;
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- لێرەدا ئەگەر لۆگۆت هەبێت ناوی فایلەکەی وێنەکەی دادەنێیت، بۆ نموونە logo.png -->
+        <img src="logo.png" alt="ATARI SHERWAN Logo" class="logo">
+        
+        <h1>ATARI SHERWAN</h1>
+        <p class="subtitle">Sherwan Center</p>
+        <div class="welcome-text">WELCOME TO MY CENTER SHERWAN</div>
+    </div>
+
+    <h3>فێرژنی پلەیستەشنەکەت هەڵبژێرە:</h3>
+
+    <div class="grid-container">
+        <button class="fw-btn" onclick="loadPayload('7.00 - 7.02')">FW 7.00 / 7.02</button>
+        <button class="fw-btn" onclick="loadPayload('7.50 - 7.55')">FW 7.50 / 7.55</button>
+        <button class="fw-btn" onclick="loadPayload('8.00 - 8.03')">FW 8.00 - 8.03</button>
+        <button class="fw-btn" onclick="loadPayload('8.50 - 8.52')">FW 8.50 / 8.52</button>
+        <button class="fw-btn" onclick="loadPayload('9.00')">FW 9.00</button>
+        <button class="fw-btn" onclick="loadPayload('9.03 - 9.04')">FW 9.03 / 9.04</button>
+        <button class="fw-btn" onclick="loadPayload('9.50 - 9.60')">FW 9.50 - 9.60</button>
+        <button class="fw-btn" onclick="loadPayload('10.00 - 10.01')">FW 10.00 / 10.01</button>
+        <button class="fw-btn" onclick="loadPayload('10.50 - 10.71')">FW 10.50 - 10.71</button>
+        <button class="fw-btn" onclick="loadPayload('11.00')">FW 11.00</button>
+        <button class="fw-btn" onclick="loadPayload('11.50 - 11.52')">FW 11.50 - 11.52</button>
+        <button class="fw-btn" onclick="loadPayload('12.00')">FW 12.00</button>
+        <button class="fw-btn" onclick="loadPayload('12.50 - 12.52')">FW 12.50 / 12.52</button>
+        <button class="fw-btn" onclick="loadPayload('13.00')">FW 13.00</button>
+    </div>
+
+    <div class="footer">
+        <p>Atari Sherwan - Soran</p>
+    </div>
+
+    <script>
+        function loadPayload(fw) {
+            alert("پەیلوودی GoldHEN بۆ فێرژنی " + fw + " ئامادە دەکرێت...\nتکایە کەمێک چاوەڕوان بە.");
+        }
+    </script>
+
+</body>
+</html>
+
