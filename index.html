@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - GoldHEN Loader</title>
+    <title>ATARI SHERWAN - Soran Center</title>
     <style>
         body {
             background: #050b14;
@@ -11,22 +11,17 @@
             font-family: Tahoma, sans-serif;
             text-align: center;
             margin: 0;
-            padding-top: 15vh;
+            padding-top: 20vh;
         }
         h1 {
             color: #00ffcc;
-            font-size: 32px;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            font-size: 36px;
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
         }
-        .box {
-            background: rgba(13, 27, 42, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: inline-block;
-            padding: 40px 60px;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
-            max-width: 500px;
-            width: 85%;
+        p {
+            color: #a0aec0;
+            font-size: 18px;
+            margin-top: 10px;
         }
         .loader {
             border: 5px solid #1e293b;
@@ -35,52 +30,28 @@
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
-            margin: 25px auto;
+            margin: 30px auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        #log {
-            color: #38bdf8;
-            font-size: 16px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
     </style>
 </head>
-<body onload="setTimeout(rop, 100);">
+<body>
 
-    <div class="box">
-        <h1>ATARI SHERWAN</h1>
-        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Latest GoldHEN</p>
-        
-        <div class="loader"></div>
-        <div id="log">خەریکی ئامادەکردنی ئێکسپلویت و بارکردنی GoldHEN...</div>
-    </div>
+    <h1>ATARI SHERWAN</h1>
+    <p>Soran Center - Firmware Detector...</p>
+    <div class="loader"></div>
 
     <script>
-        function errhandler(e) {
-            document.getElementById("log").innerHTML = "<span style='color: #ff4d4d;'>هەڵە ڕوویدا: " + e + "</span>";
-            document.querySelector('.loader').style.display = 'none';
-        }
-
-        function success() {
-            document.getElementById("log").innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
-            document.querySelector('.loader').style.display = 'none';
-        }
-
-        function rop() {
-            try {
-                // لێرەدا بنەمای جێبەجێکردنی پەیلوود و لۆدکردنی نوێترین وەشانی GoldHEN دادەنرێت
-                setTimeout(function() {
-                    document.getElementById("log").innerHTML = "کونەکە کارا بوو، بارکردنی GoldHEN...";
-                    setTimeout(success, 1500);
-                }, 1500);
-            } catch (ex) {
-                errhandler(ex.message);
-            }
-        }
+        // لێرەدا سیستەمی ناسینەوەی فێرژن و گواستنەوە بۆ فۆڵدەری گونجاو کار دەکات
+        setTimeout(function() {
+            var ua = navigator.userAgent;
+            // نموونەی پشکنینی فێرژن و ڕێڕەوکردن بۆ فۆڵدەرەکان
+            // بۆ نموونە ئەگەر فێرژنەکە دیاری کرابێت دەگوازرێتەوە ناو فۆڵدەرەکەی خۆی
+            window.location.href = "1100/"; // نموونە یان فێرژنی گونجاو
+        }, 1500);
     </script>
 
 </body>
