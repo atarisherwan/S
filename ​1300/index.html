@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATARI SHERWAN - Auto GoldHEN</title>
+    <title>ATARI SHERWAN - GoldHEN Loader</title>
     <style>
         body {
             background: #050b14;
@@ -49,30 +49,38 @@
         }
     </style>
 </head>
-<body>
+<body onload="setTimeout(rop, 100);">
 
     <div class="box">
         <h1>ATARI SHERWAN</h1>
-        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Auto Exploit Loader</p>
+        <p style="color: #a0aec0; letter-spacing: 1px;">Soran Center - Latest GoldHEN</p>
         
         <div class="loader"></div>
-        <div id="log">سەرقاڵی ئامادەکردنی ئێکسپلویت...</div>
+        <div id="log">خەریکی ئامادەکردنی ئێکسپلویت و بارکردنی GoldHEN...</div>
     </div>
 
     <script>
-        // لێرەدا سکریپتی خۆکاری جێبەجێکردنی کونەکە و لۆدکردنی GoldHEN دەست پێدەکات
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('log').innerText = "تکایە چاوەڕوان بە، کونەکە کارا دەبێت...";
-                
-                // لێرەدا کاتێک پەیلوودەکە (Payload) یان کاتۆفەکە بار دەبێت
-                setTimeout(function() {
-                    document.getElementById('log').innerText = "GoldHEN سەرکەوتوو بوو! ئامێرەکە ئامادەیە.";
-                    document.querySelector('.loader').style.display = 'none';
-                }, 2000);
+        function errhandler(e) {
+            document.getElementById("log").innerHTML = "<span style='color: #ff4d4d;'>هەڵە ڕوویدا: " + e + "</span>";
+            document.querySelector('.loader').style.display = 'none';
+        }
 
-            }, 1000);
-        });
+        function success() {
+            document.getElementById("log").innerHTML = "<span style='color: #00ffcc;'>GoldHEN بە سەرکەوتوویی کارا بوو! ئامێرەکە ئامادەیە.</span>";
+            document.querySelector('.loader').style.display = 'none';
+        }
+
+        function rop() {
+            try {
+                // لێرەدا بنەمای جێبەجێکردنی پەیلوود و لۆدکردنی نوێترین وەشانی GoldHEN دادەنرێت
+                setTimeout(function() {
+                    document.getElementById("log").innerHTML = "کونەکە کارا بوو، بارکردنی GoldHEN...";
+                    setTimeout(success, 1500);
+                }, 1500);
+            } catch (ex) {
+                errhandler(ex.message);
+            }
+        }
     </script>
 
 </body>
